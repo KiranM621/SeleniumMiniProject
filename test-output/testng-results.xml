@@ -1,45 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-09-13T14:03:01 IST" name="Default suite" finished-at="2021-09-13T14:03:14 IST" duration-ms="12779">
+  <suite name="Default suite" duration-ms="42923" started-at="2021-09-14T13:27:04 IST" finished-at="2021-09-14T13:27:47 IST">
     <groups>
     </groups>
-    <test started-at="2021-09-13T14:03:01 IST" name="Default test" finished-at="2021-09-13T14:03:14 IST" duration-ms="12779">
-      <class name="AdminLogin">
-        <test-method is-config="true" signature="BeforeTest()[pri:0, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:01 IST" name="BeforeTest" finished-at="2021-09-13T14:03:05 IST" duration-ms="3745" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- BeforeTest -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:05 IST" name="beforeMethod" finished-at="2021-09-13T14:03:05 IST" duration-ms="0" status="PASS">
+    <test name="Default test" duration-ms="42923" started-at="2021-09-14T13:27:04 IST" finished-at="2021-09-14T13:27:47 IST">
+      <class name="functionalTests.UserMyBookingHistory">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:functionalTests.UserMyBookingHistory@27a8c74e]" name="beforeMethod" is-config="true" duration-ms="9940" started-at="2021-09-14T13:27:05 IST" finished-at="2021-09-14T13:27:15 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="validLogin()[pri:1, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:05 IST" name="validLogin" finished-at="2021-09-13T14:03:07 IST" duration-ms="2347" status="PASS">
+        <test-method status="PASS" signature="f()[pri:0, instance:functionalTests.UserMyBookingHistory@27a8c74e]" name="f" duration-ms="31328" started-at="2021-09-14T13:27:15 IST" finished-at="2021-09-14T13:27:46 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validLogin -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:07 IST" name="beforeMethod" finished-at="2021-09-13T14:03:07 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- f -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:functionalTests.UserMyBookingHistory@27a8c74e]" name="afterMethod" is-config="true" duration-ms="1502" started-at="2021-09-14T13:27:46 IST" finished-at="2021-09-14T13:27:47 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="adminLogout()[pri:2, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:07 IST" name="adminLogout" finished-at="2021-09-13T14:03:12 IST" duration-ms="4720" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- adminLogout -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:12 IST" name="beforeMethod" finished-at="2021-09-13T14:03:12 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="invalidLogin()[pri:3, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:12 IST" name="invalidLogin" finished-at="2021-09-13T14:03:13 IST" duration-ms="787" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- invalidLogin -->
-        <test-method is-config="true" signature="AfterTest()[pri:0, instance:AdminLogin@550ee7e5]" started-at="2021-09-13T14:03:13 IST" name="AfterTest" finished-at="2021-09-13T14:03:14 IST" duration-ms="1120" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AfterTest -->
-      </class> <!-- AdminLogin -->
+        </test-method> <!-- afterMethod -->
+      </class> <!-- functionalTests.UserMyBookingHistory -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

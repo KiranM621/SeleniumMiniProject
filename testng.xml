@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name=".BookCarWithFewFields"/>
+      <class name="functionalTests.BookCarWithFewFields"/>
+      <class name=".AdminPassword"/>
+      <class name="functionalTests.HomePageContactUs"/>
+      <class name="functionalTests.SignUpwithExistingEmail"/>
+      <class name="functionalTests.BookCarSuccessfully"/>
+      <class name="functionalTests.LoginWithValid"/>
+      <class name=".AdminLogin"/>
+      <class name="functionalTests.UserMyBookingHistory"/>
+      <class name="functionalTests.CarListing"/>
+      <class name="functionalTests.LoginWithInvalidData"/>
+      <class name="functionalTests.AdminMyBooking"/>
+      <class name="functionalTests.BookCarWithoutLogin"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

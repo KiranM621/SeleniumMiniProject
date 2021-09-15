@@ -23,6 +23,8 @@ public class AdminLogin {
 
 		System.setProperty("webdriver.chrome.driver","D:\\Java\\MiniProject\\resource\\chromedriver.exe");
 		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+
 
 
 
@@ -50,7 +52,6 @@ public class AdminLogin {
 		
 		driver.findElement(By.xpath("(//input[@name = 'username'])")).sendKeys("admin");
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		
 		WebElement web = driver.findElement(By.xpath("(//input[@name = 'password'])"));
@@ -65,7 +66,7 @@ public class AdminLogin {
 		
 		//driver.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS) ;
 
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		
 		String actualTitle = driver.getTitle();
@@ -81,7 +82,8 @@ public class AdminLogin {
 	public void adminLogout() throws InterruptedException { 
 		
 		String expectedTitle = "Car Rental Portal | Admin Login";
-		
+		driver.findElement(By.linkText("Account")).click();
+
 		Thread.sleep(1000);
 		
 		driver.findElement(By.linkText("Logout")).click();
@@ -107,7 +109,7 @@ public class AdminLogin {
 		
 		driver.findElement(By.xpath("(//input[@name = 'username'])")).sendKeys("admin");
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		
 		WebElement web = driver.findElement(By.xpath("(//input[@name = 'password'])"));
@@ -116,11 +118,11 @@ public class AdminLogin {
 		web.sendKeys("Test@1234");
 		
 
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		web.sendKeys(Keys.ENTER);
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		
 		

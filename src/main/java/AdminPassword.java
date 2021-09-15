@@ -43,31 +43,24 @@ public class AdminPassword {
     @Test(priority = 1)
 	
 	public void changePasswordOne() { 
-		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+
 		//String expectedTitle = "Car Rental Portal | Admin Change Password";
-	
+		WebDriverWait wait = new WebDriverWait(driver,20);
+
     	String successMsg = "SUCCESS:Your Password succesfully changed";
 		
 		driver.findElement(By.linkText("Admin Login")).click();
 		
 		driver.findElement(By.xpath("(//input[@name = 'username'])")).sendKeys("admin");
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+		//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		
-		WebElement web = driver.findElement(By.xpath("(//input[@name = 'password'])"));
+		driver.findElement(By.xpath("(//input[@name = 'password'])")).sendKeys("Test@12345");
+		driver.findElement(By.tagName("button")).click();
 
-        
-		web.sendKeys("Test@12345");
 		
-
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-
-		web.sendKeys(Keys.ENTER);
-		
-		//driver.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS) ;
-
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 		
 		
 		
@@ -77,27 +70,19 @@ public class AdminPassword {
 
 		driver.findElement(By.xpath("(//input[@name = 'confirmpassword'])")).sendKeys("Test@12345",Keys.ENTER);
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-
-	    //driver.findElement(By.xpath("(//input[@class = 'page-title'])")).sendKeys(Keys.ENTER);;
-
-		//webele.sendKeys(Keys.ENTER);
-		//String actualTitle = driver.getTitle();
+		
 		
 		
 		String msg =  driver.findElement(By.xpath("(//div[@class = 'succWrap'])")).getText();
-		WebDriverWait wait = new WebDriverWait(driver,20);
 
 		Assert.assertEquals(successMsg, msg);
 
-		//System.out.println(msg);
 	}
     
     @Test(priority = 2)
 	
 	public void changePasswordTwo() { 
 		
-		//String expectedTitle = "Car Rental Portal | Admin Change Password";
 	
     	String alertExpectedMsg = "New Password and Confirm Password Field do not match  !!";
 		
@@ -105,7 +90,6 @@ public class AdminPassword {
 		
 		driver.findElement(By.xpath("(//input[@name = 'username'])")).sendKeys("admin");
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
 		
 		WebElement web = driver.findElement(By.xpath("(//input[@name = 'password'])"));
@@ -118,9 +102,6 @@ public class AdminPassword {
 
 		web.sendKeys(Keys.ENTER);
 		
-		//driver.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS) ;
-
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 		
 		
 		
@@ -128,24 +109,20 @@ public class AdminPassword {
 		
 		driver.findElement(By.xpath("(//input[@name = 'newpassword'])")).sendKeys("Test@1234");
 
-		driver.findElement(By.xpath("(//input[@name = 'confirmpassword'])")).sendKeys("Test@12345",Keys.ENTER);
+		driver.findElement(By.xpath("(//input[@name = 'confirmpassword'])")).sendKeys("Test@12345");
 		
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
-
-	    //driver.findElement(By.xpath("(//input[@class = 'page-title'])")).sendKeys(Keys.ENTER);;
-
-		//webele.sendKeys(Keys.ENTER);
-		//String actualTitle = driver.getTitle();
+	
+		WebDriverWait wait = new WebDriverWait(driver,20);
 		
+		driver.findElement(By.tagName("button")).click();
+
 		
 	    String alertActualMsg =  driver.switchTo().alert().getText();		
 	    driver.switchTo().alert().accept();
-		WebDriverWait wait = new WebDriverWait(driver,20);
 
 	
 		Assert.assertEquals(alertExpectedMsg,alertActualMsg);
 
-		//System.out.println(msg);
 	}
     
     
@@ -153,7 +130,6 @@ public class AdminPassword {
 	
    	public void changePasswordThree() { 
    		
-   		//String expectedTitle = "Car Rental Portal | Admin Change Password";
    	
        	String errorExpectedMsg = "ERROR:Your current password is not valid.";
    		
@@ -161,7 +137,6 @@ public class AdminPassword {
    		
    		driver.findElement(By.xpath("(//input[@name = 'username'])")).sendKeys("admin");
    		
-   		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
    		
    		WebElement web = driver.findElement(By.xpath("(//input[@name = 'password'])"));
@@ -170,13 +145,10 @@ public class AdminPassword {
    		web.sendKeys("Test@12345");
    		
 
-   		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 
    		web.sendKeys(Keys.ENTER);
    		
-   		//driver.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS) ;
 
-   		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
    		
    		
    		
@@ -184,22 +156,17 @@ public class AdminPassword {
    		
    		driver.findElement(By.xpath("(//input[@name = 'newpassword'])")).sendKeys("Test@1234");
 
-   		driver.findElement(By.xpath("(//input[@name = 'confirmpassword'])")).sendKeys("Test@1234",Keys.ENTER);
-   		
-   		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+   		driver.findElement(By.xpath("(//input[@name = 'confirmpassword'])")).sendKeys("Test@1234");
+		WebDriverWait wait = new WebDriverWait(driver,20);
 
-   	    //driver.findElement(By.xpath("(//input[@class = 'page-title'])")).sendKeys(Keys.ENTER);;
+		driver.findElement(By.tagName("button")).click();
 
-   		//webele.sendKeys(Keys.ENTER);
-   		//String actualTitle = driver.getTitle();
    		
    	    String errorActualMsg =  driver.findElement(By.xpath("(//div[@class = 'errorWrap'])")).getText();;		
-		WebDriverWait wait = new WebDriverWait(driver,20);
 
    	
    		Assert.assertEquals(errorExpectedMsg,errorActualMsg);
 
-   		//System.out.println(msg);
    	}
        
 	
@@ -212,5 +179,6 @@ public class AdminPassword {
 		driver.quit();
 		
 	}
+	
 	
 }

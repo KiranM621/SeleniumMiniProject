@@ -1,0 +1,1476 @@
+{
+	"info": {
+		"_postman_id": "4d819714-a11e-438f-bde9-af301c0d69c1",
+		"name": "REST API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "simple book api",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://simple-books-api.glitch.me/books",
+							"protocol": "https",
+							"host": [
+								"simple-books-api",
+								"glitch",
+								"me"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sample_Books_Api",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{firstUrl}}/books/:bookId?type=fiction",
+							"host": [
+								"{{firstUrl}}"
+							],
+							"path": [
+								"books",
+								":bookId"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "fiction"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "bookId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "for single book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{firstUrl}}/books?type=fiction",
+							"host": [
+								"{{firstUrl}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "fiction"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register api client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"clientName\": \"advdfry\",\r\n   \"clientEmail\": \"dbrw@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{firstUrl}}/api-clients",
+							"host": [
+								"{{firstUrl}}"
+							],
+							"path": [
+								"api-clients"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "fiction",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bookId\": 1,\r\n  \"customerName\": \"John\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{firstUrl}}/orders",
+							"host": [
+								"{{firstUrl}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "fiction",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Personal_Info",
+			"item": [
+				{
+					"name": "02_Fetch Personal Info By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"JOE\");\r",
+									"});\r",
+									"\r",
+									"/*pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"cricket\");\r",
+									"});*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Personal_Info/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Personal_Info",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "01_Fetch All Personal Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"JOE\");\r",
+									"});\r",
+									"\r",
+									"/*pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"cricket\");\r",
+									"});*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Personal_Info/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Personal_Info",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03_Create A new Personal Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"90\",\r\n    \"firstName\":\"Ramesh\",\r\n    \"lastName\":\"Yadav\",\r\n    \"city\":\"Mumbai\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Personal_Info/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Personal_Info",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04_Modify with id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Vary\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"firstName\":\"Umesh\",\r\n    \"lastName\":\"Patil\",\r\n    \"city\":\"Mumbai\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Personal_Info/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Personal_Info",
+								"5"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05_Delete ID 6 from Personal Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Vary\");\r",
+									"});\r",
+									"/*\r",
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,204]);\r",
+									"});*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Personal_Info/90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Personal_Info",
+								"90"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "06_Update/Modify by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Vary\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validated id for updated info\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(\"40\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastName\": \"Singh\",\r\n    \"age\": \"55\",\r\n    \"city\":\"Pune\",\r\n    \"state\":\"Maharashtra\",\r\n    \"grade\":\"98\",\r\n    \"height\":\"77\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Personal_Info/40",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Personal_Info",
+								"40"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Places",
+			"item": [
+				{
+					"name": "01_fetch all places",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"placeId\": \"mh42\",\r\n    \"placeName\": \"lakhadi\",\r\n    \"cityId\": \"Baramati\",\r\n    \"countryName\": \"India\"  \r\n  }\r\n  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Places/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Places",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03_create new place",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Connection is present\", function () {\r",
+									"    pm.response.to.have.header(\"Connection\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n     \"id\" : 8,\r\n    \"placeName\": \"Nashik\",\r\n    \"cityId\": \"Hydrabad\",\r\n    \"countryName\": \"India\"  \r\n    }\r\n\r\n  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Places/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Places",
+								""
+							],
+							"query": [
+								{
+									"key": "placeId",
+									"value": "STOC-sky",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05_Delete by place name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placeName\": \"supe\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Places/:placeName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Places",
+								":placeName"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "placeName",
+									"value": "supe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02_fetch by Place Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Places/?placeName=Stockholm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Places",
+								""
+							],
+							"query": [
+								{
+									"key": "placeName",
+									"value": "Stockholm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04_Modify with  id and Country name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Connection is present\", function () {\r",
+									"    pm.response.to.have.header(\"Connection\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"countryName\": \"UK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Places/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Places",
+								"5"
+							],
+							"query": [
+								{
+									"key": "placeIdID",
+									"value": "STOC-sky",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "06_Update/Modify by Place name and country id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 600ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Connection is present\", function () {\r",
+									"    pm.response.to.have.header(\"Connection\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placeId\": \"Solapur11\",\r\n    \"placeName\": \"Solapur\",\r\n    \"countryId\": \"IND\",\r\n    \"countryName\": \"India\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Places/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Places",
+								"5"
+							],
+							"query": [
+								{
+									"key": "placeIdID",
+									"value": "STOC-sky",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Searching",
+			"item": [
+				{
+					"name": "01_Fetch by Title",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 1s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Search_Results?title=Elon Musk - Forbes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Search_Results"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Elon Musk - Forbes"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "01_Fetch All Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 1s\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Search_Results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Search_Results"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Elon Musk - Forbes",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02_Create New Search Result",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validated title for Updated Record\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql('About Postman');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"{{RandomNumber}}\",\r\n    \"title\":\"About Postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Search_Results/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Search_Results",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{RandomNumber}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03_Modify with created id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"The English Wikipedia is\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\":\"The English Wikipedia is the English-language edition of the free online encyclopedia Wikipedia. It was founded on 15 January 2001 as Wikipedia's first edition\",\r\n    \"link\":\"www.wikihow.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Search_Results/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Search_Results",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04_Delete ID 12 from Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Search_Results/54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Search_Results",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05_update/Modify By id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checked The News which expected\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.News).to.eql('How Postman went from a hobby on the Chrome webstore to a platform of 3 million users');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"videoLink\":\"https://youtu.be/juldrxDrSH0\",\r\n    \"News\":\"How Postman went from a hobby on the Chrome webstore to a platform of 3 million users\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Search_Results/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Search_Results",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Covid-19_Info",
+			"item": [
+				{
+					"name": "Fetch all info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/Covid-19_Info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Covid-19_Info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "01_Fetch Covid-19_Info by country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Setting environment variable \r",
+									"pm.environment.set(\"Covid\", 1000);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Covid-19_Info?country=Afghanistan&country=Albania",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Covid-19_Info"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "Afghanistan"
+								},
+								{
+									"key": "country",
+									"value": "Albania"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02_create new covid-19_Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"validated by Country Code : \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql('CH');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate by Country\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.country).to.eql(\"China\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{RandomNumber}}\",\r\n    \"code\": \"CH\",\r\n    \"confirmed\": 30000,\r\n    \"country\": \"China\",\r\n    \"critical\": 1100,\r\n    \"deaths\": 1300,\r\n    \"lastChange\": \"2020-07-26T08:41:33+03:00\",\r\n    \"lastUpdate\": \"2020-07-26T20:15:03+04:00\",\r\n    \"latitude\": 37.03911,\r\n    \"longitude\": 70.709953,\r\n    \"recovered\": 25000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Covid-19_Info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Covid-19_Info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03_Modify Covid-19_Info by deaths",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"PS\",\r\n    \"confirmed\": 45000,\r\n    \"country\": \"Amerika\",\r\n    \"critical\": 100,\r\n    \"deaths\": \"2333\",\r\n    \"lastChange\": \"2020-07-26T08:41:33+03:00\",\r\n    \"lastUpdate\": \"2020-07-26T20:15:03+04:00\",\r\n    \"latitude\": 37.03911,\r\n    \"longitude\": 70.709953,\r\n    \"recovered\": 25000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Covid-19_Info/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Covid-19_Info",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03_Delete Covid-19_Info by deapths",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Covid-19_Info/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Covid-19_Info",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05_Update/Modify Covid-19_Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Date\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 700ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(700);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validated By id : \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql('2');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"country\": \"Shrilanka\",\r\n    \"critical\": 500,\r\n    \"deaths\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Covid-19_Info/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Covid-19_Info",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "IN",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set(\"RandomNumber\",_.random(40,80));",
+					"",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "firstUrl",
+			"value": "https://simple-books-api.glitch.me"
+		},
+		{
+			"key": "accessToken",
+			"value": "c315983ccb27d05475feb20af4b62cb6f945a3f63aacce882f85fcd5d77a32fb"
+		}
+	]
+}
